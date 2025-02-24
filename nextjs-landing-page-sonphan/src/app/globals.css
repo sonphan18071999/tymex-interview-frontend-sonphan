@@ -1,10 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@use "../styles/_mixins.scss" as *;
+@use "../styles/_variables.scss" as *;
 
 :root {
     --background: #ffffff;
     --foreground: #171717;
+
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,8 +18,18 @@
     }
 }
 
+@font-face {
+    font-family: 'DroneRangerPro';
+    src: url('/assets/fonts/dronerangerpro_bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body {
     color: var(--foreground);
     background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'DroneRangerPro', Arial, Helvetica, sans-serif;
+    background-image: url('/assets/images/background.svg');
+    background-size: cover;
+    background-position: center;
 }

@@ -6,7 +6,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuConfigs: MenuConfig[] = [
-    { name: "Home", link: "/" },
+    { name: "Home", link: "/home" },
     { name: "About Us", link: "/about" },
     { name: "Our Team", link: "/team" },
     { name: "Market Place", link: "/market" },
