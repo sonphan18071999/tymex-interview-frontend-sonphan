@@ -1,14 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@use "../styles/_mixins.scss" as *;
-@use "../styles/_variables.scss" as *;
 
 :root {
     --background: #ffffff;
     --foreground: #171717;
-
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,10 +22,14 @@
 }
 
 body {
-    color: var(--foreground);
-    background: var(--background);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /*color: var(--foreground);*/
+    /*background: var(--background);*/
     font-family: 'DroneRangerPro', Arial, Helvetica, sans-serif;
-    background-image: url('/assets/images/background.svg');
+    background-image: url("/assets/images/background.svg");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
