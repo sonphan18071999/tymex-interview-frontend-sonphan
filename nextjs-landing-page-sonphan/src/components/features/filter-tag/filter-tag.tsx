@@ -31,6 +31,10 @@ const FilterTag = () => {
           <Typography className={"text-white"}>{item.name}</Typography>
         </Button>
       ))}
+
+      <Button className={"secondary-btn"}>
+        <Typography className={"text-white"}>^</Typography>
+      </Button>
     </div>
   );
 };
