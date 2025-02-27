@@ -1,8 +1,16 @@
 @import "./variables.module.scss";
 
 @mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
+  $value: false;
+
+  @each $key, $size in $breakpoints {
+    @if $key == $breakpoint {
+      $value: $size;
+    }
+  }
+
+  @if $value {
+    @media (min-width: $value) {
       @content;
     }
   } @else {

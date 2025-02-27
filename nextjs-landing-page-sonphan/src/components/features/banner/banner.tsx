@@ -39,7 +39,7 @@ const Banner = () => {
           <section className={styles.characters__contents}>
             <div className={styles.characters__list}>
               {characters.map((character: Character) => (
-                <FloatCharacter character={character} />
+                <FloatCharacter character={character} key={character.name} />
               ))}
             </div>
           </section>

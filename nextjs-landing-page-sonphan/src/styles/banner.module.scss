@@ -105,6 +105,10 @@ $maxInnerWidth: 1574px;
     overflow-y: hidden;
   }
 
+  .characters__list::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari */
+  }
+
   .character__container {
     display: flex;
     flex-direction: column;

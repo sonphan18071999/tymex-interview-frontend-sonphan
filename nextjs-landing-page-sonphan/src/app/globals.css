@@ -33,3 +33,27 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+
+.ant-select-selector {
+    background-color: transparent !important;
+    border: 1px solid #3A3841 !important;
+}
+
+.ant-select-selection-wrap {
+    color: white;
+}
+
+.secondary-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(to right, rgba(218, 69, 143, 0.4), rgba(218, 52, 221, 0.4));
+}
+
+.secondary-btn:hover, .secondary-active-btn {
+    background: linear-gradient(to right, rgba(218, 69, 143, 1), rgba(218, 52, 221, 1)) !important;
+    font-size: 1.125rem;
+}

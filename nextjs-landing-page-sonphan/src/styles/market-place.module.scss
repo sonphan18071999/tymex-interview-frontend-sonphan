@@ -1,0 +1,111 @@
+@import "./ultis/mixins.module";
+
+.market__container {
+  display: flex;
+  flex-direction: column;
+  column-gap: 1rem;
+
+  .market__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search__icon {
+    color: gray;
+  }
+
+  .select__input {
+    background-color: transparent !important;
+  }
+
+  .search__input {
+    background-color: transparent !important;
+    color: white;
+    border: 1px solid #3A3841;
+  }
+
+  .ant-select-selector {
+    background-color: transparent !important;
+  }
+
+  .action__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .NFT__card {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    width: clamp(200px, 20vw, 200px);
+    max-width: 100%;
+    height: clamp(200px, 30vh, 400px);
+    background-color: #3A3841;
+    border: 1px solid transparent;
+    border-radius: 10px;
+  }
+
+  .picture__header {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header__primary_button {
+    background-color: rgba(49, 59, 69, 0.5);
+    padding: 4px 12px;
+    font-size: 12px;
+    color: white;
+    border: none;
+  }
+
+  .header__heart_button {
+    background-color: transparent;
+    border: none;
+    color: white;
+  }
+
+  .header__heart_button:hover {
+    background-color: transparent !important;
+    color: red !important;
+  }
+
+  .NFT__picture {
+    border-radius: 4px;
+    height: 100%;
+  }
+
+  .NFT__details {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  text, p, label, .ant-typography {
+    color: white !important;
+  }
+
+  .details__header {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    //padding: 0.5rem;
+  }
+
+  .details__price {
+    display: flex;
+    align-items: center;
+    column-gap: 0.2rem;
+  }
+
+  .author {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem
+  }
+
+
+  @include respond-to('sm') {
+    flex-direction: row;
+  }
+}
