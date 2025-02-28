@@ -56,6 +56,9 @@ const NFTCard: React.FC<NFTCardProps> = ({ product }) => {
       top: "0",
       width: "100%",
       height: "100%",
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
     };
   };
 
