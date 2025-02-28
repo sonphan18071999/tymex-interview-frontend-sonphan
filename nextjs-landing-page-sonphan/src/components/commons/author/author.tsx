@@ -4,18 +4,18 @@ import { Typography } from "antd";
 interface AuthorProps {
   image: string;
   name: string;
-  type: "verified-level-1" | "verified-level-2";
+  type: string;
 }
 
 const Author: React.FC<AuthorProps> = ({ image, name, type }) => {
   const typesSrc: Record<string, string>[] = [
-    { "verified-level-1": "/assets/images/verified-green.svg" },
-    { "verified-level-2": "/assets/images/verified-pink.svg" },
+    { online: "/assets/images/verified-green.svg" },
+    { offline: "/assets/images/verified-pink.svg" },
   ];
 
   const mapTagType = () => {
     const found = typesSrc.find((obj) => type in obj);
-    return found ? found[type] : "";
+    return found ? found[type] : "/assets/images/unavailable-icons.svg";
   };
 
   return (

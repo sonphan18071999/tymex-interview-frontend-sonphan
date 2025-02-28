@@ -4,19 +4,20 @@ import { useState } from "react";
 import styles from "@/styles/market-items.module.scss";
 
 interface MarketItemsProps {
-  products: IProduct[];
+  products: IProduct[] | null;
 }
 
 const MarketItems: React.FC<MarketItemsProps> = ({ products }) => {
   const [displayItems, setDisplayItems] = useState<IProduct[]>(
-    products.slice(0, 20),
+    products?.slice(0, 20) || [],
   );
+
   return (
     <>
       <h2>Market Items</h2>
       <div className={styles.items__container}>
         {displayItems.map((product) => (
-          <NFTCard type="Common" key={product.id} {...product} />
+          <NFTCard product={product} key={product.id} {...product} />
         ))}
       </div>
     </>

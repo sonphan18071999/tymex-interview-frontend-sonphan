@@ -1,4 +1,14 @@
 export interface NFTBackgroundConfig {
-  type: "Mythic" | "Rare" | "Epic" | "Common" | "Legendary";
+  type:
+    | "Upper Body"
+    | "Lower Body"
+    | "Hat"
+    | "Shoes"
+    | "Accessory"
+    | "Legendary"
+    | "Mythic"
+    | "Epic"
+    | "Rare"
+    | "Common";
   src: string;
 }

@@ -41,16 +41,18 @@
     row-gap: 0.5rem;
     width: clamp(200px, 20vw, 200px);
     max-width: 100%;
-    height: clamp(200px, 30vh, 400px);
+    height: auto;
     background-color: #3A3841;
     border: 1px solid transparent;
     border-radius: 10px;
   }
 
   .picture__header {
+    position: relative;
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
+    z-index: 1;
   }
 
   .header__primary_button {
@@ -65,16 +67,21 @@
     background-color: transparent;
     border: none;
     color: white;
+    box-shadow: none;
+
   }
 
-  .header__heart_button:hover {
+  .header__heart_button:hover, .header__heart_button_active {
     background-color: transparent !important;
     color: red !important;
   }
 
+
   .NFT__picture {
+    position: relative;
     border-radius: 4px;
-    height: 100%;
+    height: auto;
+    min-height: 10rem;
   }
 
   .NFT__details {

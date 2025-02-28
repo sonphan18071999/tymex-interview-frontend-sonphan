@@ -1,15 +1,16 @@
 import { NFTBackgroundConfig } from "@/models/configs/NFTBackgroundConfig.model";
 import styles from "@/styles/market-place.module.scss";
 import React from "react";
-import { Button, Image, Tag, Typography } from "antd";
+import { Button, Image, Tag, Tooltip, Typography } from "antd";
 import { HeartFilled } from "@ant-design/icons";
 import Author from "@/components/commons/author/author";
+import { IProduct } from "@/models/product.model";
 
 interface NFTCardProps {
-  type: string;
+  product: IProduct;
 }
 
-const NFTCard: React.FC<NFTCardProps> = ({ type }) => {
+const NFTCard: React.FC<NFTCardProps> = ({ product }) => {
   const NFTcards: NFTBackgroundConfig[] = [
     { type: "Epic", src: "/assets/images/epic-card-bg.svg" },
     { type: "Mythic", src: "/assets/images/mythic-card-bg.svg" },
@@ -17,30 +18,66 @@ const NFTCard: React.FC<NFTCardProps> = ({ type }) => {
     { type: "Legendary", src: "/assets/images/legendary-card-bg.svg" },
   ];
 
-  const background = NFTcards.find((item) => item.type === type)?.src || "";
-
   const mapBackgroundType = () => {
-    const itemFound = NFTcards.find((item) => item.type === type);
+    const itemFound = NFTcards.find((item) => item.type === product.category);
+
     if (!itemFound) {
-      console.error("No match NFT item found");
-      return { backgroundImage: "none" };
+      console.warn("No match NFT item found");
+      return { backgroundColor: "white" };
     }
+
     return { backgroundImage: `url(${itemFound.src})` };
   };
+
+  const mapBackgroundAvatar = () => {
+    let productImage = { backgroundImage: "" };
+
+    switch (product.category) {
+      case "Epic":
+        productImage.backgroundImage = `url('/assets/images/the-dj-small.svg')`;
+        break;
+      case "Mythic":
+        productImage.backgroundImage = `url('/assets/images/basket-ball.svg')`;
+        break;
+      case "Rare":
+        productImage.backgroundImage = `url('/assets/images/neon-guy.svg')`;
+        break;
+      case "Legendary":
+        productImage.backgroundImage = `url('/assets/images/mafia-england.svg')`;
+        break;
+      default:
+        productImage.backgroundImage = `url('/assets/images/mafia-england.svg')`;
+        break;
+    }
+
+    return {
+      ...productImage,
+      position: "absolute",
+      top: "0",
+      width: "100%",
+      height: "100%",
+    };
+  };
+
   return (
     <div className={`nft-card w-2 h-2 ${styles.NFT__card}`}>
       <div className={styles.NFT__picture} style={mapBackgroundType()}>
         <div className={styles.picture__header}>
-          <Tag className={styles.header__primary_button}>{type}</Tag>
-          <Button className={styles.header__heart_button}>
+          <Tag className={styles.header__primary_button}>
+            {product.category}
+          </Tag>
+          <Button
+            className={`${styles.header__heart_button} ${product.isFavorite ? styles.header__heart_button_active : ""}`}
+          >
             <HeartFilled />
           </Button>
         </div>
+        <div style={mapBackgroundAvatar()}></div>
       </div>
       <div className={styles.NFT__details}>
         <div className={styles.details__header}>
           <Typography className={"text-white"}>
-            <b>The DJ</b>
+            <b>{product.title}</b>
           </Typography>
           <div className={styles.details__price}>
             <Image
@@ -48,14 +85,18 @@ const NFTCard: React.FC<NFTCardProps> = ({ type }) => {
               width={"20"}
               height={"20"}
             />
-            <Typography className={"text-white"}>248 ETH</Typography>
+            <Tooltip title={`${product.price} ETH`} arrow>
+              <Typography className="text-white text-[0.8rem] truncate max-w-[100px] overflow-hidden">
+                {product.price} ETH
+              </Typography>
+            </Tooltip>
           </div>
         </div>
         <div className={styles.author}>
           <Author
-            image={"/assets/images/the-dj.svg"}
-            name={"Geography "}
-            type={"verified-level-1"}
+            image={product.author.avatar}
+            name={`${product.author.firstName} ${product.author.lastName}`}
+            type={product.author.onlineStatus}
           />
         </div>
       </div>
