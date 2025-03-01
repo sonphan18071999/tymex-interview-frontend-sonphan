@@ -26,11 +26,13 @@ $max-inner-width: 1574px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    height: auto;
-    max-width: 100%;
+    gap: 0.5rem;
+    height: 100%;
+    max-width: 425px;
     padding: 0.5rem;
-    row-gap: 0.5rem;
+    width: 100%;
   }
+
 
   .picture__header {
     display: flex;
@@ -101,15 +103,13 @@ $max-inner-width: 1574px;
 
   @include respond-to("xxxs") {
     margin: auto;
+    overflow: hidden;
     row-gap: 1rem;
     width: calc(100vw - 2rem);
 
-    .NFT__card {
-      width: 100%;
-    }
 
     .NFT__picture {
-      min-height: 50vw;
+      min-height: 10rem;
     }
   }
 
@@ -117,15 +117,24 @@ $max-inner-width: 1574px;
     .NFT__picture {
       min-height: clamp(10rem, 40vw, 15rem);
     }
+
+    //.NFT__card {
+    //  width: clamp(40vw, 44vw, 375px);
+    //}
   }
 
   @include respond-to("xxs") {
     .NFT__picture {
-      min-height: clamp(10rem, 40vw, 15rem);
+      //min-height: clamp(3rem, 40vw, 20rem);
     }
   }
 
   @include respond-to('sm') {
     flex-direction: row;
+
+    //.NFT__card {
+    //  max-width: 267px;
+    //  width: clamp(30vw, 35vw, 267px);
+    //}
   }
 }

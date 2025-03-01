@@ -21,7 +21,7 @@ const MarketPlace = () => {
                 <FilterForm/>
                 <div className={styles.market__items}>
                     <FilterTag/>
-                    {/*<MarketItems products={data} />*/}
+                    <MarketItems products={data}/>
                 </div>
             </div>
         </>
