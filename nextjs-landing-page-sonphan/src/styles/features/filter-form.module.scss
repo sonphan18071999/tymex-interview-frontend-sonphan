@@ -1,0 +1,39 @@
+@import "../ultis/mixins.module";
+
+.filter__form {
+  @include respond-to('xxxs') {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+  }
+
+  .action__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .search__input {
+    background-color: transparent !important;
+    border: 1px solid #3A3841;
+    color: white;
+  }
+
+  .search__icon {
+    color: gray;
+  }
+
+  .select__input {
+    background-color: transparent !important;
+  }
+
+  @include respond-to('sm') {
+    width: clamp(15vw, 30vw, 23.25rem);
+  }
+
+  @include respond-to('lg') {
+    //width: clamp(20vw, 40vw, 23.25rem);
+    max-width: 23.25rem;
+    width: 30vw;
+  }
+}

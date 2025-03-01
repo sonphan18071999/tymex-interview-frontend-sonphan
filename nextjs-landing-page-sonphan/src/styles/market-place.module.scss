@@ -1,38 +1,23 @@
 @import "./ultis/mixins.module";
 
+$max-inner-width: 1574px;
+
 .market__container {
   column-gap: 1rem;
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 100vw;
+  max-width: $max-inner-width;
+  width: 100%;
 
   .market__items {
     display: flex;
     flex-direction: column;
-  }
-
-  .search__icon {
-    color: gray;
-  }
-
-  .select__input {
-    background-color: transparent !important;
-  }
-
-  .search__input {
-    background-color: transparent !important;
-    border: 1px solid #3A3841;
-    color: white;
+    width: 100%;
   }
 
   .ant-select-selector {
     background-color: transparent !important;
-  }
-
-  .action__buttons {
-    display: flex;
-    justify-content: space-between;
   }
 
   .NFT__card {
@@ -110,11 +95,15 @@
   .author {
     align-items: center;
     column-gap: 0.5rem;
-    display: flex
+    display: flex;
   }
 
 
   @include respond-to("xxxs") {
+    margin: auto;
+    row-gap: 1rem;
+    width: calc(100vw - 2rem);
+
     .NFT__card {
       width: 100%;
     }
