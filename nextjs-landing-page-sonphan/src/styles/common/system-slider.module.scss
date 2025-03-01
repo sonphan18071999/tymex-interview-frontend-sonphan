@@ -1,0 +1,10 @@
+.system__slider {
+  display: flex;
+  flex-direction: column;
+
+
+  .price__range {
+    display: flex;
+    justify-content: space-between;
+  }
+}

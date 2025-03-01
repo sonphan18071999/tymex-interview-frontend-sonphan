@@ -5,6 +5,8 @@
 :root {
     --background: #fff;
     --foreground: #171717;
+    --ant-input-color: gray;
+    --ant-input-placeholder-color: lightgray;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -58,3 +60,38 @@ body {
     background: linear-gradient(to right, rgb(218 69 143 / 100%), rgb(218 52 221 / 100%)) !important;
     font-size: 1.125rem;
 }
+
+.primary-btn {
+    background: linear-gradient(to right, rgb(218 69 143 / 100%), rgb(218 52 221 / 100%));
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.primary-btn:hover {
+    background: linear-gradient(to right, rgb(218 69 143 / 40%), rgb(218 52 221 / 40%));
+}
+
+.ant-slider-rail {
+    background-color: #3A3841 !important;
+}
+
+.ant-slider-track {
+    background: linear-gradient(90deg, #DA458F 1%, #DA41A2 24%, #DA37CE 81%, #DA34DD 100%);
+}
+
+
+.ant-slider-handle-1::after {
+    background: radial-gradient(circle, rgb(255 0 255 / 100%), rgb(0 0 0 / 80%)) !important;
+    box-shadow: 0 0 0 1px white !important;
+    outline: none;
+}
+
+.ant-slider-handle-2::after {
+    background: radial-gradient(circle, rgb(255 0 255 / 100%), rgb(0 0 0 / 80%));
+    box-shadow: 0 0 0 1px white !important;
+    outline: none;
+}
+

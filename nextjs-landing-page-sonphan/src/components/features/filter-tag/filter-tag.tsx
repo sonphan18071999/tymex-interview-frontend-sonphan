@@ -2,9 +2,14 @@
 import React, {useState} from "react";
 import {Button, Typography} from "antd";
 import styles from '@/styles/features/filter-tag.module.scss';
+import {Category, IFilterTag} from "@/models/filter-form";
 
-const FilterTag = () => {
-    const tagConfigs: FilterTag[] = [
+interface FilterTagProps {
+    onTagSelected: (tag: Category) => void;
+}
+
+const FilterTag: React.FC<FilterTagProps> = ({onTagSelected}) => {
+    const tagConfigs: IFilterTag[] = [
         {name: "All"},
         {name: "Upper Body"},
         {name: "Lower Body"},
@@ -17,7 +22,7 @@ const FilterTag = () => {
         {name: "Rare"},
     ];
 
-    const [currentActiveTag, setCurrentActiveTag] = useState<TagType | undefined>(
+    const [currentActiveTag, setCurrentActiveTag] = useState<Category | undefined>(
         undefined,
     );
 
@@ -27,7 +32,10 @@ const FilterTag = () => {
                 <Button
                     className={`secondary-btn ${currentActiveTag === item.name ? "secondary-active-btn" : ""}`}
                     key={item.name}
-                    onClick={(event) => setCurrentActiveTag(item.name)}
+                    onClick={(event) => {
+                        onTagSelected(item.name)
+                        setCurrentActiveTag(item.name)
+                    }}
                 >
                     <Typography className={"text-white"}>{item.name}</Typography>
                 </Button>
@@ -42,18 +50,5 @@ const FilterTag = () => {
 
 export default FilterTag;
 
-interface FilterTag {
-    name: TagType;
-}
 
-type TagType =
-    | "All"
-    | "Upper Body"
-    | "Lower Body"
-    | "Hat"
-    | "Shoes"
-    | "Accessory"
-    | "Legendary"
-    | "Mythic"
-    | "Epic"
-    | "Rare";
+

@@ -4,14 +4,14 @@ import MarketPlace from "@/components/features/market-place/market-place";
 import styles from '@/styles/pages/home-page.module.scss'
 
 const HomePage = () => {
-  return (
-    <>
-      <div className={styles.homepage__container}>
-        <Banner />
-        <MarketPlace />
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className={styles.homepage__container}>
+                <Banner/>
+                <MarketPlace/>
+            </div>
+        </>
+    );
 };
 
 export default HomePage;
