@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-    --background: #ffffff;
+    --background: #fff;
     --foreground: #171717;
 }
 
@@ -15,23 +15,23 @@
 }
 
 @font-face {
-    font-family: 'DroneRangerPro';
-    src: url('/assets/fonts/dronerangerpro_bold.otf') format('opentype');
-    font-weight: bold;
+    font-family: DroneRangerPro;
     font-style: normal;
+    font-weight: bold;
+    src: url('/assets/fonts/dronerangerpro_bold.otf') format('opentype');
 }
 
 body {
+    background-image: url("/assets/images/background.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* color: var(--foreground); */
+    /* background: var(--background); */
+    font-family: DroneRangerPro, Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     width: 100%;
-    /*color: var(--foreground);*/
-    /*background: var(--background);*/
-    font-family: 'DroneRangerPro', Arial, Helvetica, sans-serif;
-    background-image: url("/assets/images/background.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 
@@ -45,15 +45,15 @@ body {
 }
 
 .secondary-btn {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    background: linear-gradient(to right, rgb(218 69 143 / 40%), rgb(218 52 221 / 40%));
     border: none;
+    border-radius: 0.5rem;
     font-weight: 600;
+    padding: 0.5rem 1rem;
     transition: all 0.3s ease-in-out;
-    background: linear-gradient(to right, rgba(218, 69, 143, 0.4), rgba(218, 52, 221, 0.4));
 }
 
 .secondary-btn:hover, .secondary-active-btn {
-    background: linear-gradient(to right, rgba(218, 69, 143, 1), rgba(218, 52, 221, 1)) !important;
+    background: linear-gradient(to right, rgb(218 69 143 / 100%), rgb(218 52 221 / 100%)) !important;
     font-size: 1.125rem;
 }

@@ -1,4 +1,4 @@
-@import "./variables.module.scss";
+@import "./variables.module";
 
 @mixin respond-to($breakpoint) {
   $value: false;
