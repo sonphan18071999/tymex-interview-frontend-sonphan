@@ -1,6 +1,6 @@
 "use client";
 import {useState} from "react";
-import {Button} from "antd";
+import {Button, Typography} from "antd";
 
 const Header = () => {
 
@@ -29,7 +29,11 @@ const Header = () => {
                         </a>
                     ))}
                 </nav>
-                <Button type="primary">Connect Wallet</Button>
+                <button className={'primary-btn'}>
+                    <Typography className={'text-white'}>
+                        Connect Wallet
+                    </Typography>
+                </button>
             </div>
         </header>
     );

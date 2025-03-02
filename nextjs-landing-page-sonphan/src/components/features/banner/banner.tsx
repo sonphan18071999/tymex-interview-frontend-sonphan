@@ -8,6 +8,8 @@ const Banner = () => {
     return (
         <>
             <section className={styles.banner__container}>
+                <section className={styles.footer__background}>
+                </section>
                 <section className={styles.banner__contents}>
                     <section className={styles.textBlock}>
                         <div className={styles.textBlock__new}>
@@ -28,8 +30,7 @@ const Banner = () => {
                     </section>
                 </section>
 
-                <section className={styles.footer__background}>
-                </section>
+
             </section>
         </>
     );
