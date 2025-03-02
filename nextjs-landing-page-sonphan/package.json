@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "style-format": "npx stylelint \"**/*.module.scss\" --fix"
+    "style-format": "npx stylelint \"**/*.module.scss\" --fix",
+    "postinstall": "npm install --legacy-peer-deps"
   },
   "dependencies": {
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
