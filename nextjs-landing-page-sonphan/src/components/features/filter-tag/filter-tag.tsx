@@ -28,11 +28,11 @@ const FilterTag: React.FC<FilterTagProps> = ({onTagSelected}) => {
 
     return (
         <div className={styles.filter__tag}>
-            {tagConfigs.map((item, ind) => (
+            {tagConfigs.map((item) => (
                 <Button
                     className={`secondary-btn ${currentActiveTag === item.name ? "secondary-active-btn" : ""}`}
                     key={item.name}
-                    onClick={(event) => {
+                    onClick={() => {
                         onTagSelected(item.name)
                         setCurrentActiveTag(item.name)
                     }}

@@ -1,6 +1,6 @@
 import NFTCard from "@/components/commons/NFT-card/NFT-card";
 import {IProduct} from "@/models/product.model";
-import React, {useState} from "react";
+import React from "react";
 import styles from "@/styles/market-items.module.scss";
 import {Spin, Typography} from "antd";
 

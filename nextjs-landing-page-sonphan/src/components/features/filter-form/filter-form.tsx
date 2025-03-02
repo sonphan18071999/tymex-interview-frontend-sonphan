@@ -1,7 +1,7 @@
 "use client";
 import {Input, Typography} from "antd";
 import SystemSelect from "@/components/commons/system-select/system-select";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {SearchOutlined} from "@ant-design/icons";
 import styles from "@/styles/features/filter-form.module.scss";
 import SystemSlider from "@/components/commons/system-slider/system-slider";

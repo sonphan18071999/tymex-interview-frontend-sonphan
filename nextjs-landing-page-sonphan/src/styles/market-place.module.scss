@@ -13,6 +13,7 @@ $max-inner-width: 1574px;
   .market__items {
     display: flex;
     flex-direction: column;
+    row-gap: 1rem;
     width: 100%;
   }
 

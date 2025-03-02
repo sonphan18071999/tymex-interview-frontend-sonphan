@@ -4,4 +4,16 @@
   display: grid;
   grid-gap: 2.5rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  max-height: 1977px;
+  overflow-y: auto;
+  padding-right: 1rem;
+  scrollbar-color: #FFCC21 #777;
+}
+
+.items__container::-webkit-scrollbar-track {
+  width: 1px !important;
+}
+
+.items__container::-webkit-scrollbar {
+  width: 1px !important;
 }

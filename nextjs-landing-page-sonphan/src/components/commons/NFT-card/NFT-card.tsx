@@ -29,8 +29,17 @@ const NFTCard: React.FC<NFTCardProps> = ({product}) => {
         return {backgroundImage: `url(${itemFound.src})`};
     };
 
-    const mapBackgroundAvatar = () => {
-        let productImage = {backgroundImage: ""};
+    const mapBackgroundAvatar = (): {
+        backgroundImage: string;
+        position: "absolute" | "relative" | "fixed" | "sticky" | "static";
+        top: string;
+        width: string;
+        height: string;
+        backgroundPosition: string;
+        backgroundSize: string;
+        backgroundRepeat: string;
+    } => {
+        const productImage = {backgroundImage: ""};
 
         switch (product.category) {
             case "Epic":

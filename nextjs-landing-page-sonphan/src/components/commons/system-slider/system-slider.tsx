@@ -9,8 +9,8 @@ interface SystemSliderProps {
 }
 
 const SystemSlider: React.FC<SystemSliderProps> = ({start, end}) => {
-    const [startVal, setStartVal] = React.useState(start);
-    const [endVal, setEndVal] = React.useState(end);
+    const [startVal] = React.useState(start);
+    const [endVal] = React.useState(end);
 
     const customTooltip = (value: number | undefined): string => {
         if (value === undefined) return "0";

@@ -2,7 +2,7 @@
 import MarketItems from "@/components/features/market-items/market-items";
 import styles from "@/styles/market-place.module.scss";
 import FilterForm from "@/components/features/filter-form/filter-form";
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useMemo, useState} from "react";
 import FilterTag from "@/components/features/filter-tag/filter-tag";
 import useFetch from "@/hooks/useFetch";
 import {IProduct} from "@/models/product.model";
@@ -26,7 +26,7 @@ const MarketPlace = () => {
     }, [searchQueries, limit]);
 
 
-    const {data, loading, error} = useFetch<IProduct[]>(
+    const {data, loading} = useFetch<IProduct[]>(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}products?${queryString}`,
     );
 

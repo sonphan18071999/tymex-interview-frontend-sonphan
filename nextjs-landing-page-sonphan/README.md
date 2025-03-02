@@ -3,7 +3,8 @@ with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-ne
 
 ## Getting Started
 
-First, run the development server:
+- Use NodeJS 18 (nvm use 18) \n
+  First, run the development server:
 
 ```bash
 npm run dev
@@ -69,3 +70,5 @@ background-color: red; // Screens <= 480px
 @include respond-to("xxs") {
 background-color: yellow; // Screens <= 375px
 }`
+
+
