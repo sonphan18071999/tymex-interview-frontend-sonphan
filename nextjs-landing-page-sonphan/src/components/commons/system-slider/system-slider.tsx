@@ -27,7 +27,7 @@ const SystemSlider: React.FC<SystemSliderProps> = ({start, end}) => {
                 </Typography>
                 <Slider range={{draggableTrack: true}} defaultValue={[20, 50]}
                         tooltip={{formatter: customTooltip}}
-                />;
+                />
                 <div className={styles.price__range}>
                     <Typography className={'text-white'}>{startVal} ETH</Typography>
                     <Typography className={'text-white'}>{endVal} ETH</Typography>

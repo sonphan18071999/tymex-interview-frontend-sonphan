@@ -106,7 +106,7 @@ const FilterForm: React.FC<FilterFormProps> = ({onFormSearch}) => {
                 </button>
             </div>
         </div>
-    );
+    )
 };
 
 export default FilterForm;

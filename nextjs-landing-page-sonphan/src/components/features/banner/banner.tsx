@@ -1,12 +1,9 @@
 "use client";
 import React from "react";
 import styles from "@/styles/banner.module.scss";
-import {Character} from "@/models/character";
-import FloatCharacter from "@/components/commons/float-character/float-character";
-import {Carousel} from "antd";
+import FloatCharacters from "@/components/commons/float-character/float-character";
 
 const Banner = () => {
-
 
     return (
         <>
@@ -27,14 +24,11 @@ const Banner = () => {
                         </div>
                         <div className={styles.textBlock__arrival}></div>
                         <div className={styles.highlight__character}></div>
+                        <FloatCharacters/>
                     </section>
+                </section>
 
-                    {/*<section className={styles.footer__background}></section>*/}
-
-                    {/*<section className={styles.characters__contents}>*/}
-                    {/*    <FloatCharacter/>*/}
-                    {/*</section>*/}
-
+                <section className={styles.footer__background}>
                 </section>
             </section>
         </>

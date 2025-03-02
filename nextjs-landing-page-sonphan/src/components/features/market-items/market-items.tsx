@@ -37,7 +37,7 @@ const MarketItems: React.FC<MarketItemsProps> = ({products, onLoadMore, loading}
                 </div>
             </div>
         </>
-    );
-};
+    )
+}
 
 export default MarketItems;

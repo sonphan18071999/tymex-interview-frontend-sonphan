@@ -1,10 +1,8 @@
-import styles from "@/styles/banner.module.scss";
 import React from "react";
 import {Character} from "@/models/character";
-import {Carousel} from "antd";
+import styles from '@/styles/features/float-characters.module.scss'
 
-
-const FloatCharacter = () => {
+const FloatCharacters = () => {
     const characters: Character[] = [
         {name: "Assassin", image: "assets/images/assassin.svg"},
         {name: "Neon guy", image: "assets/images/neon-guy.svg"},
@@ -13,23 +11,25 @@ const FloatCharacter = () => {
     ];
     return (
         <>
-            <div className={styles.character_item_flex}>
-                {characters.map((item) => <section key={item.name}
+            <div className={styles.characters}>
+                {characters.map((item) => <div className={styles.character} key={item.name}
                 >
-                    <div className={styles.character}>
+                    <div className={styles.character_image__container}>
                         <img
-                            className={styles.character__image}
                             src={item.image}
                             alt="Top character"
-                            width="100%"
                         />
                     </div>
-                    <div className={'flex justify-center py-2'}>{item.name}</div>
-                </section>)}
+                    <div className={`flex justify-center my-2 ${styles.character__name}`}>
+                        <p>
+                            {item.name}
+                        </p>
+                    </div>
+                </div>)}
             </div>
 
         </>
     );
 };
 
-export default FloatCharacter;
+export default FloatCharacters;
