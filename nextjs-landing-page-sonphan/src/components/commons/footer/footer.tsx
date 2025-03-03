@@ -1,3 +1,4 @@
+"use client";
 import styles from "@/styles/common/footer.module.scss";
 import FooterNavigation from "@/components/commons/footer-navigation/footer-navigation";
 import ContactUs from "@/components/commons/contact-us/contact-us";

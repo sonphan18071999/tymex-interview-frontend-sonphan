@@ -12,25 +12,27 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-gray-900 text-white">
-      <div className="container mx-auto flex justify-between items-center py-4 px-6">
-        <nav className="hidden md:flex space-x-6">
-          {menuConfigs.map((menu, index) => (
-            <a
-              key={index}
-              href={menu.link}
-              className="relative text-lg font-medium hover:text-gray-400 transition duration-300"
-            >
-              {menu.name}
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-400 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
-        </nav>
-        <button className={"primary-btn"}>
-          <Typography className={"text-white"}>Connect Wallet</Typography>
-        </button>
-      </div>
-    </header>
+    <>
+      <header className="bg-gray-900 text-white">
+        <div className="container mx-auto flex justify-between items-center py-4 px-6">
+          <nav className="hidden md:flex space-x-6">
+            {menuConfigs.map((menu, index) => (
+              <a
+                key={index}
+                href={menu.link}
+                className="relative text-lg font-medium hover:text-gray-400 transition duration-300"
+              >
+                {menu.name}
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-400 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            ))}
+          </nav>
+          <button className={"primary-btn"}>
+            <Typography className={"text-white"}>Connect Wallet</Typography>
+          </button>
+        </div>
+      </header>
+    </>
   );
 };
 
