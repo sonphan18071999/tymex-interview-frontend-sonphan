@@ -1,6 +1,26 @@
+@import "../ultis/mixins.module";
+
+$max-inner-width: 1574px;
+
 .footer {
-  background: url("/assets/images/footer.svg") no-repeat;
+  background-color: #17161A;
   height: auto;
   min-height: 20rem;
   width: 100%;
+
+  .footer__contents {
+    max-width: $max-inner-width;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: white;
+    width: 100%;
+    margin: auto;
+  }
+
+  @include respond-to('xxxs') {
+    .footer__contents {
+      grid-template-columns: 1fr;
+    }
+  }
 }

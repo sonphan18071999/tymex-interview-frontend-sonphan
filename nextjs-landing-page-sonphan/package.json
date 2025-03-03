@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "style-format": "npx stylelint \"**/*.module.scss\" --fix",
-    "postinstall": "npm install --legacy-peer-deps"
+    "style-format": "npx stylelint \"**/*.module.scss\" --fix"
   },
   "dependencies": {
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
@@ -31,7 +30,6 @@
     "postcss": "^8",
     "prettier": "^3.5.2",
     "stylelint": "^16.15.0",
-    "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-standard-scss": "^14.0.0",
     "stylelint-order": "^6.0.4",
     "tailwindcss": "^3.4.1",
