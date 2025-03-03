@@ -9,13 +9,13 @@ $max-inner-width: 1574px;
   width: 100%;
 
   .footer__contents {
-    max-width: $max-inner-width;
+    color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    color: white;
-    width: 100%;
     margin: auto;
+    max-width: $max-inner-width;
+    width: 100%;
   }
 
   @include respond-to('xxxs') {
