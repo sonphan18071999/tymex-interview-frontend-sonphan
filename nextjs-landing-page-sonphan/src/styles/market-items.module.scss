@@ -1,4 +1,4 @@
-@import "./ultis/mixins.module";
+@use "ultis/mixins";
 
 .items__container {
   display: grid;

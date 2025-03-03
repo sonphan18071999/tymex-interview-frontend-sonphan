@@ -1,4 +1,4 @@
-@import "../ultis/mixins.module";
+@use "../ultis/mixins";
 
 
 .homepage__container {
@@ -8,4 +8,3 @@
   row-gap: 2rem;
   width: 100%;
 }
-

@@ -1,4 +1,4 @@
-@import "../ultis/mixins.module";
+@import "../ultis/mixins";
 
 .filter__form {
   @include respond-to('xxxs') {

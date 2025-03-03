@@ -1,4 +1,4 @@
-@import "./variables.module";
+@import "./_variables";
 
 @mixin respond-to($breakpoint) {
   $value: false;
