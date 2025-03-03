@@ -47,10 +47,17 @@ const MarketPlace = () => {
     setSearchQueries((prev) => ({ ...prev, category: tag }));
   };
 
+  const handleSearchChange = (text?: string) => {
+    setSearchQueries((prev) => ({ ...prev, title: text?.trim() }));
+  };
+
   return (
     <>
       <div className={styles.market__container}>
-        <FilterForm onFormSearch={handleFieldSearch} />
+        <FilterForm
+          onFormSearch={handleFieldSearch}
+          onSearchChange={handleSearchChange}
+        />
         <div className={styles.market__items}>
           <FilterTag onTagSelected={handleTagSelection} />
           <MarketItems

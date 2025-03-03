@@ -1,11 +1,12 @@
 "use client";
 import { Input, Typography } from "antd";
 import SystemSelect from "@/components/commons/system-select/system-select";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import styles from "@/styles/features/filter-form.module.scss";
 import SystemSlider from "@/components/commons/system-slider/system-slider";
 import { FilterFormFields } from "@/models/filter-form";
+import useDebounce from "@/hooks/useDebounce";
 
 interface CustomSelectProps {
   label: string;
@@ -16,15 +17,22 @@ interface CustomSelectProps {
 
 interface FilterFormProps {
   onFormSearch: (formVal: FilterFormFields) => void;
+  onSearchChange: (text?: string) => void;
 }
 
-const FilterForm: React.FC<FilterFormProps> = ({ onFormSearch }) => {
+const FilterForm: React.FC<FilterFormProps> = ({
+  onFormSearch,
+  onSearchChange,
+}) => {
   const [filters, setFilters] = useState<FilterFormFields>({
     tier: undefined,
     theme: undefined,
     time: undefined,
     price: undefined,
   });
+
+  const [searchText, setSearchText] = useState<string | undefined>("");
+  const debouncedSearchText = useDebounce(searchText, 500);
 
   const handleSelect = (key: keyof typeof filters, value: string) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
@@ -72,15 +80,22 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFormSearch }) => {
     },
   ];
 
+  useEffect(() => {
+    onSearchChange(debouncedSearchText);
+  }, [debouncedSearchText]);
   return (
     <>
       <div className={styles.filter__form}>
-        <Input
-          placeholder={"Quick search"}
-          aria-placeholder="Quick search"
-          prefix={<SearchOutlined className={styles.search__icon} />}
-          className={styles.search__input}
-        />
+        <div className={styles.search__container}>
+          <Input
+            id="quick-search"
+            placeholder="Quick search"
+            prefix={<SearchOutlined className={styles.search__icon} />}
+            className={styles.search__input}
+            aria-label="Quick search"
+            onChange={($event) => setSearchText($event.target.value)}
+          />
+        </div>
         <SystemSlider start={0.01} end={200} />
         {selectConfigs.map((config) => (
           <SystemSelect

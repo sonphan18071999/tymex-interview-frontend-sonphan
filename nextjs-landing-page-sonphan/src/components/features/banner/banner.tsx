@@ -1,16 +1,31 @@
 "use client";
-import React from "react";
+import React, { Fragment } from "react";
 import styles from "@/styles/banner.module.scss";
 import FloatCharacters from "@/components/commons/float-character/float-character";
+import useFadeAnimation from "@/hooks/useFadeAnimation";
 
 const Banner = () => {
+  const textBlockNewRef = useFadeAnimation({
+    direction: "right",
+    duration: 1.5,
+  });
+  const highLightCharacterRef = useFadeAnimation({
+    direction: "up",
+    duration: 1.5,
+  });
+
+  const textBlockArrivalRef = useFadeAnimation({
+    direction: "left",
+    duration: 1.5,
+  });
+
   return (
     <>
       <section className={styles.banner__container}>
         <section className={styles.footer__background}></section>
         <section className={styles.banner__contents}>
           <section className={styles.textBlock}>
-            <div className={styles.textBlock__new}>
+            <div className={styles.textBlock__new} ref={textBlockNewRef}>
               <img
                 src={"assets/images/new__tag.svg"}
                 alt={"New text"}
@@ -22,8 +37,14 @@ const Banner = () => {
                 <button className={styles.textBlock__shopNowBtn}></button>
               </div>
             </div>
-            <div className={styles.textBlock__arrival}></div>
-            <div className={styles.highlight__character}></div>
+            <div
+              className={styles.textBlock__arrival}
+              ref={textBlockArrivalRef}
+            ></div>
+            <div
+              className={styles.highlight__character}
+              ref={highLightCharacterRef}
+            ></div>
             <FloatCharacters />
           </section>
         </section>
