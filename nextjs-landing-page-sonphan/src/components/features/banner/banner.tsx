@@ -27,7 +27,9 @@ const Banner = () => {
           <section className={styles.textBlock}>
             <div className={styles.textBlock__new} ref={textBlockNewRef}>
               <img
-                src={"assets/images/new__tag.svg"}
+                src={
+                  "https://raw.githubusercontent.com/sonphan18071999/tymex-interview-frontend-sonphan/refs/heads/main/nextjs-landing-page-sonphan/public/assets/images/new__tag.svg"
+                }
                 alt={"New text"}
                 width={"100%"}
                 height={"auto"}

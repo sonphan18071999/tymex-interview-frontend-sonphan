@@ -10,10 +10,26 @@ const FloatCharacters = () => {
   });
 
   const characters: Character[] = [
-    { name: "Assassin", image: "assets/images/assassin.svg" },
-    { name: "Neon guy", image: "assets/images/neon-guy.svg" },
-    { name: "Mafia england", image: "assets/images/mafia-england.svg" },
-    { name: "Basketball guy", image: "assets/images/basket-ball.svg" },
+    {
+      name: "Assassin",
+      image:
+        "https://raw.githubusercontent.com/sonphan18071999/tymex-interview-frontend-sonphan/refs/heads/main/nextjs-landing-page-sonphan/public/assets/images/assassin.svg",
+    },
+    {
+      name: "Neon guy",
+      image:
+        "https://raw.githubusercontent.com/sonphan18071999/tymex-interview-frontend-sonphan/refs/heads/main/nextjs-landing-page-sonphan/public/assets/images/neon-guy.svg",
+    },
+    {
+      name: "Mafia england",
+      image:
+        "https://raw.githubusercontent.com/sonphan18071999/tymex-interview-frontend-sonphan/refs/heads/main/nextjs-landing-page-sonphan/public/assets/images/mafia-england.svg",
+    },
+    {
+      name: "Basketball guy",
+      image:
+        "https://raw.githubusercontent.com/sonphan18071999/tymex-interview-frontend-sonphan/refs/heads/main/nextjs-landing-page-sonphan/public/assets/images/basket-ball.svg",
+    },
   ];
   return (
     <>
