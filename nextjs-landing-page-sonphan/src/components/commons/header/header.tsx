@@ -13,8 +13,8 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-gray-900 text-white">
-        <div className="container mx-auto flex justify-between items-center py-4 px-6">
+      <header className="bg-gray-900 text-white flex justify-center items-center">
+        <div className="container flex justify-between items-center py-4 mx-2 max-w-[1574px]">
           <nav className="hidden md:flex space-x-6">
             {menuConfigs.map((menu, index) => (
               <a

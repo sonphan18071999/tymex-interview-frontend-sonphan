@@ -35,18 +35,15 @@ const Banner = () => {
                 height={"auto"}
                 className={styles.textBlock__newTag__image}
               />
-              <div className={styles.textBlock__shopNowContainer}>
-                <button className={styles.textBlock__shopNowBtn}></button>
-              </div>
             </div>
             <div
               className={styles.textBlock__arrival}
               ref={textBlockArrivalRef}
-            ></div>
+            />
             <div
               className={styles.highlight__character}
               ref={highLightCharacterRef}
-            ></div>
+            />
             <FloatCharacters />
           </section>
         </section>

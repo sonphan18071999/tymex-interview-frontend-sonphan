@@ -6,7 +6,7 @@ import { Skeleton } from "antd";
 
 const Banner = dynamic(() => import("@/components/features/banner/banner"), {
   ssr: false,
-  loading: () => <Skeleton style={{ width: "100%", height: 200 }} />,
+  loading: () => <Skeleton style={{ width: "100%", height: 400 }} />,
 });
 
 const MarketPlace = dynamic(
@@ -14,7 +14,11 @@ const MarketPlace = dynamic(
   {
     ssr: false,
     loading: () => (
-      <Skeleton active paragraph={{ rows: 4 }} style={{ padding: "20px" }} />
+      <Skeleton
+        active
+        paragraph={{ rows: 4 }}
+        style={{ padding: "20px", height: 400 }}
+      />
     ),
   },
 );

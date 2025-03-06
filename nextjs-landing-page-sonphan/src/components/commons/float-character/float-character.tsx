@@ -39,11 +39,6 @@ const FloatCharacters = () => {
             <div className={styles.character_image__container}>
               <img src={item.image} alt="Top character" />
             </div>
-            <div
-              className={`flex justify-center my-2 ${styles.character__name}`}
-            >
-              <p>{item.name}</p>
-            </div>
           </div>
         ))}
       </div>
