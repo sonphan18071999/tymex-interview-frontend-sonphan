@@ -7,6 +7,7 @@ import styles from "@/styles/features/filter-form.module.scss";
 import SystemSlider from "@/components/commons/system-slider/system-slider";
 import { FilterFormFields } from "@/models/filter-form";
 import useDebounce from "@/hooks/useDebounce";
+import { useSearchStore } from "@/hooks/useSearchStore";
 
 interface CustomSelectProps {
   label: string;
@@ -15,21 +16,15 @@ interface CustomSelectProps {
   defaultValue?: string;
 }
 
-interface FilterFormProps {
-  onFormSearch: (formVal: FilterFormFields) => void;
-  onSearchChange: (text?: string) => void;
-}
-
-const FilterForm: React.FC<FilterFormProps> = ({
-  onFormSearch,
-  onSearchChange,
-}) => {
+const FilterForm: React.FC = () => {
   const [filters, setFilters] = useState<FilterFormFields>({
     tier: undefined,
     theme: undefined,
     time: undefined,
     price: undefined,
   });
+
+  const { searchByMultipleFields, searchByInput } = useSearchStore();
 
   const [searchText, setSearchText] = useState<string | undefined>("");
   const debouncedSearchText = useDebounce(searchText, 500);
@@ -81,7 +76,7 @@ const FilterForm: React.FC<FilterFormProps> = ({
   ];
 
   useEffect(() => {
-    onSearchChange(debouncedSearchText);
+    searchByInput(debouncedSearchText);
   }, [debouncedSearchText]);
   return (
     <>
@@ -122,7 +117,9 @@ const FilterForm: React.FC<FilterFormProps> = ({
 
           <button
             className="primary-btn px-10"
-            onClick={() => onFormSearch(filters)}
+            onClick={() => {
+              searchByMultipleFields(filters);
+            }}
           >
             <Typography className="text-white">Search</Typography>
           </button>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "antd/dist/reset.css";
 import React from "react";
 import Footer from "@/components/commons/footer/footer";
 import Header from "@/components/commons/header/header";
