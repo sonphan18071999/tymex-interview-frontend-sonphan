@@ -1,11 +1,11 @@
 "use client";
 import { Input, Typography } from "antd";
 import SystemSelect from "@/components/commons/system-select/system-select";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import styles from "@/styles/features/filter-form.module.scss";
 import SystemSlider from "@/components/commons/system-slider/system-slider";
-import { FilterFormFields } from "@/models/filter-form";
+import { FilterFormFields, FilterType } from "@/models/filter-form";
 import useDebounce from "@/hooks/useDebounce";
 import { useSearchStore } from "@/hooks/useSearchStore";
 
@@ -24,7 +24,14 @@ const FilterForm: React.FC = () => {
     price: undefined,
   });
 
-  const { searchByMultipleFields, searchByInput } = useSearchStore();
+  const {
+    searchByMultipleFields,
+    searchByInput,
+    setInputSearch,
+    setMultipleFieldsFilter,
+    loading,
+    currentFilterActive,
+  } = useSearchStore();
 
   const [searchText, setSearchText] = useState<string | undefined>("");
   const debouncedSearchText = useDebounce(searchText, 500);
@@ -75,9 +82,15 @@ const FilterForm: React.FC = () => {
     },
   ];
 
-  useEffect(() => {
-    searchByInput(debouncedSearchText);
+  const handleSearch = useCallback(() => {
+    setInputSearch(debouncedSearchText);
+    searchByInput();
   }, [debouncedSearchText]);
+
+  useEffect(() => {
+    handleSearch();
+  }, [handleSearch]);
+
   return (
     <>
       <div className={styles.filter__form}>
@@ -118,10 +131,16 @@ const FilterForm: React.FC = () => {
           <button
             className="primary-btn px-10"
             onClick={() => {
-              searchByMultipleFields(filters);
+              setMultipleFieldsFilter(filters);
+              searchByMultipleFields();
             }}
+            disabled={loading && currentFilterActive === FilterType.FILTER_FORM}
           >
-            <Typography className="text-white">Search</Typography>
+            <Typography className="text-white">
+              {loading && currentFilterActive === FilterType.FILTER_FORM
+                ? "Searching..."
+                : "Search"}
+            </Typography>
           </button>
         </div>
       </div>

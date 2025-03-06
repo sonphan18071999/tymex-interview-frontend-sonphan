@@ -1,33 +1,57 @@
 import { create } from "zustand";
 import { IProduct } from "@/models/product.model";
-import { Category, FilterFormFields } from "@/models/filter-form";
+import { Category, FilterFormFields, FilterType } from "@/models/filter-form";
 
 interface SearchStore {
   products: IProduct[];
   loading: boolean;
   limit: number;
-  tagSelected?: Category;
-  searchByInput: (text?: string) => Promise<void>;
-  searchByMultipleFields: (filters: FilterFormFields) => Promise<void>;
-  searchByTag: (tag?: Category) => Promise<void>;
-  setTagSelected: (tag: Category | undefined) => void;
+  searchByInput: () => Promise<void>;
+  multipleFieldsFilter: FilterFormFields;
+  setMultipleFieldsFilter: (fields: FilterFormFields) => void;
+  searchByMultipleFields: () => Promise<void>;
+  searchByTag: () => Promise<void>;
+  currentFilterActive?: FilterType; //Since we have three filter mechanising. I assume that the view more button logic will apply latest filter.
+  viewMore: () => void;
+  increaseLimit: () => void;
+  inputSearchText?: string; //Current search is display on the search field
+  setInputSearch: (text?: string) => void;
+  activeTag?: Category;
+  setActiveTag: (category?: Category) => void;
 }
 
 export const useSearchStore = create<SearchStore>((set, get) => ({
   products: [],
   loading: false,
   limit: 20,
-  activeSearch: null,
   tagSelected: undefined,
-  setTagSelected: async (tag) => {
-    set({ tagSelected: tag });
+  setCurrentFilterActive: undefined,
+  multipleFieldsFilter: {} as FilterFormFields,
+  setMultipleFieldsFilter: (fields: FilterFormFields) => {
+    set({ multipleFieldsFilter: fields });
   },
-  searchByInput: async (text?: string) => {
+  increaseLimit: () => {
+    set((state) => ({ limit: state.limit + 20 }));
+  },
+  setInputSearch: (text?: string) => {
+    set({ inputSearchText: text });
+  },
+  setActiveTag: (category) => {
+    const { activeTag } = get();
+
+    if (activeTag === category) {
+      set({ activeTag: undefined });
+    } else {
+      set({ activeTag: category });
+    }
+  },
+  searchByInput: async () => {
     set({ loading: true });
+    set({ currentFilterActive: FilterType.INPUT });
     try {
-      const { limit } = get();
+      const { limit, inputSearchText } = get();
       const params = new URLSearchParams();
-      if (text) params.append("title_like", text);
+      if (inputSearchText) params.append("title_like", inputSearchText);
       params.append("_limit", limit.toString());
 
       const response = await fetch(
@@ -43,11 +67,13 @@ export const useSearchStore = create<SearchStore>((set, get) => ({
     }
   },
 
-  searchByMultipleFields: async (filters: FilterFormFields) => {
+  searchByMultipleFields: async () => {
+    set({ currentFilterActive: FilterType.FILTER_FORM });
     set({ loading: true });
+    const { multipleFieldsFilter } = get();
     try {
       const { limit } = get();
-      const queryString = Object.entries(filters)
+      const queryString = Object.entries(multipleFieldsFilter)
         .filter(([_, value]) => value !== undefined)
         .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
         .join("&");
@@ -63,15 +89,15 @@ export const useSearchStore = create<SearchStore>((set, get) => ({
       set({ loading: false });
     }
   },
-  searchByTag: async (tag?: Category) => {
+  searchByTag: async () => {
     set({ loading: true });
-    if (tag) get().setTagSelected(tag);
+    set({ currentFilterActive: FilterType.TAG });
 
     try {
-      const { limit, tagSelected, products } = get();
-      const response = tagSelected
+      const { limit, activeTag, products } = get();
+      const response = activeTag
         ? await fetch(
-            `${process.env.NEXT_PUBLIC_API_BASE_URL}products?category=${encodeURIComponent(tagSelected)}&_limit=${limit}`,
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}products?category=${encodeURIComponent(activeTag)}&_limit=${limit}`,
           )
         : await fetch(
             `${process.env.NEXT_PUBLIC_API_BASE_URL}products?&_limit=${limit}`,
@@ -83,6 +109,27 @@ export const useSearchStore = create<SearchStore>((set, get) => ({
       set({ products: [] });
     } finally {
       set({ loading: false });
+    }
+  },
+  viewMore: () => {
+    const {
+      currentFilterActive,
+      searchByInput,
+      searchByMultipleFields,
+      searchByTag,
+    } = get();
+    get().increaseLimit();
+
+    switch (currentFilterActive) {
+      case FilterType.INPUT:
+        searchByInput();
+        break;
+      case FilterType.FILTER_FORM:
+        searchByMultipleFields();
+        break;
+      case FilterType.TAG:
+        searchByTag();
+        break;
     }
   },
 }));

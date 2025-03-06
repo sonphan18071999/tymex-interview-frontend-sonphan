@@ -1,12 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button, Typography } from "antd";
 import styles from "@/styles/features/filter-tag.module.scss";
-import { Category, IFilterTag } from "@/models/filter-form";
+import { IFilterTag } from "@/models/filter-form";
 import { useSearchStore } from "@/hooks/useSearchStore";
 
 const FilterTag: React.FC = () => {
-  const { searchByTag, tagSelected } = useSearchStore();
+  const { searchByTag, setActiveTag, activeTag } = useSearchStore();
   const tagConfigs: IFilterTag[] = [
     { name: "All" },
     { name: "Upper Body" },
@@ -20,23 +20,15 @@ const FilterTag: React.FC = () => {
     { name: "Rare" },
   ];
 
-  const [currentActiveTag, setCurrentActiveTag] = useState<
-    Category | undefined
-  >(undefined);
-
-  useEffect(() => {
-    searchByTag();
-  }, [tagSelected]);
-
   return (
     <div className={styles.filter__tag}>
       {tagConfigs.map((item) => (
         <Button
-          className={`secondary-btn ${currentActiveTag === item.name ? "secondary-active-btn" : ""}`}
+          className={`secondary-btn ${activeTag === item.name ? "secondary-active-btn" : ""}`}
           key={item.name}
           onClick={() => {
-            searchByTag(item.name);
-            setCurrentActiveTag(item.name);
+            setActiveTag(item.name);
+            searchByTag();
           }}
         >
           <Typography className={"text-white"}>{item.name}</Typography>
