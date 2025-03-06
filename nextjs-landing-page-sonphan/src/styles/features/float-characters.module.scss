@@ -50,6 +50,7 @@
   @include respond-to("sm") {
     grid-column: 1/4;
     grid-template-columns: repeat(auto-fit, minmax(100px, 210px));
+
     .character {
       max-width: 150px;
     }
