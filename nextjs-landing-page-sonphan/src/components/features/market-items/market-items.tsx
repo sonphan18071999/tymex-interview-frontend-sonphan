@@ -5,8 +5,7 @@ import { Spin, Typography } from "antd";
 import { useSearchStore } from "@/hooks/useSearchStore";
 
 const MarketItems: React.FC = () => {
-  const { loading, products, limit, increaseLimit, viewMore } =
-    useSearchStore();
+  const { loading, products, increaseLimit, viewMore } = useSearchStore();
 
   return (
     <>

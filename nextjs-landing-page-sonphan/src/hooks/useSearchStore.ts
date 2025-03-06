@@ -74,7 +74,7 @@ export const useSearchStore = create<SearchStore>((set, get) => ({
     try {
       const { limit } = get();
       const queryString = Object.entries(multipleFieldsFilter)
-        .filter(([_, value]) => value !== undefined)
+        .filter(([, value]) => value !== undefined)
         .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
         .join("&");
       const response = await fetch(
@@ -94,7 +94,7 @@ export const useSearchStore = create<SearchStore>((set, get) => ({
     set({ currentFilterActive: FilterType.TAG });
 
     try {
-      const { limit, activeTag, products } = get();
+      const { limit, activeTag } = get();
       const response = activeTag
         ? await fetch(
             `${process.env.NEXT_PUBLIC_API_BASE_URL}products?category=${encodeURIComponent(activeTag)}&_limit=${limit}`,
