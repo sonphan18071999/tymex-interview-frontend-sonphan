@@ -3,6 +3,7 @@ import React from "react";
 import styles from "@/styles/pages/home-page.module.scss";
 import dynamic from "next/dynamic";
 import { Skeleton } from "antd";
+import ComponySection from "@/components/features/ComponySection";
 
 const Banner = dynamic(() => import("@/components/features/banner/banner"), {
   ssr: false,
@@ -27,6 +28,7 @@ const HomePage = () => {
   return (
     <div className={styles.homepage__container}>
       <Banner />
+      <ComponySection />
       <MarketPlace />
     </div>
   );

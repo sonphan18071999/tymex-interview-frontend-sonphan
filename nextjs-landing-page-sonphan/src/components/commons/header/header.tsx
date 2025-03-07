@@ -6,7 +6,7 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 const Header = () => {
   const menuConfigs: MenuConfig[] = [
     { name: "Home", link: "/home" },
-    { name: "About Us", link: "/about" },
+    { name: "About Us", link: "/about-us" },
     { name: "Our Team", link: "/team" },
     { name: "Market Place", link: "/market" },
     { name: "Road Map", link: "/roadmap" },
