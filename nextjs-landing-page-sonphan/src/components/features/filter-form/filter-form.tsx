@@ -36,7 +36,10 @@ const FilterForm: React.FC = () => {
   const [searchText, setSearchText] = useState<string | undefined>("");
   const debouncedSearchText = useDebounce(searchText, 500);
 
-  const handleSelect = (key: keyof typeof filters, value: string) => {
+  const handleSelect = (
+    key: keyof typeof filters,
+    value: string | number[],
+  ) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -71,21 +74,16 @@ const FilterForm: React.FC = () => {
       handleSelect: (value: string) => handleSelect("time", value),
       defaultValue: filters.time,
     },
-    {
-      label: "Price",
-      options: [
-        { value: "LTH", label: "Low to High" },
-        { value: "HTL", label: "High to Low" },
-      ],
-      handleSelect: (value: string) => handleSelect("price", value),
-      defaultValue: filters.price,
-    },
   ];
 
   const handleSearch = useCallback(() => {
     setInputSearch(debouncedSearchText);
     searchByInput();
   }, [debouncedSearchText]);
+
+  const handleSliderValueChange = (values: number[]) => {
+    handleSelect("price", values);
+  };
 
   useEffect(() => {
     handleSearch();
@@ -104,7 +102,11 @@ const FilterForm: React.FC = () => {
             onChange={($event) => setSearchText($event.target.value)}
           />
         </div>
-        <SystemSlider start={0.01} end={200} />
+        <SystemSlider
+          start={0.01}
+          end={200}
+          onInputChange={handleSliderValueChange}
+        />
         {selectConfigs.map((config) => (
           <SystemSelect
             label={config.label}

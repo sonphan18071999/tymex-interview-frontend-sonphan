@@ -75,7 +75,12 @@ export const useSearchStore = create<SearchStore>((set, get) => ({
       const { limit } = get();
       const queryString = Object.entries(multipleFieldsFilter)
         .filter(([, value]) => value !== undefined)
-        .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+        .map(([key, value]) => {
+          if (key === "price") {
+            return `${key}_gte=${encodeURIComponent(value[0])}&${key}_lte=${encodeURIComponent(value[1])}`;
+          }
+          return `${key}=${encodeURIComponent(value)}`;
+        })
         .join("&");
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}products?${queryString}&_limit=${limit}`,

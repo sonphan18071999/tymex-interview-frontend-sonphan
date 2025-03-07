@@ -2,7 +2,7 @@ export interface FilterFormFields {
   theme?: "Dark" | "Light" | "Colorful" | "Halloween";
   tier?: "Basic" | "Premium" | "Deluxe";
   time?: "LTH" | "HTL";
-  price?: string;
+  price?: number[];
   category?: Category;
 }
 
