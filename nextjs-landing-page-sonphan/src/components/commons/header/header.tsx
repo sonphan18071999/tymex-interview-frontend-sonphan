@@ -1,5 +1,7 @@
 "use client";
-import { Typography } from "antd";
+import { Badge, Button, Typography } from "antd";
+import React from "react";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 
 const Header = () => {
   const menuConfigs: MenuConfig[] = [
@@ -27,9 +29,18 @@ const Header = () => {
               </a>
             ))}
           </nav>
-          <button className={"primary-btn"}>
-            <Typography className={"text-white"}>Connect Wallet</Typography>
-          </button>
+          <section className="flex flex-row gap-8">
+            <div>
+              <Badge count={5} color="black">
+                <Button className="primary-btn text-white">
+                  <ShoppingCartOutlined />
+                </Button>
+              </Badge>
+            </div>
+            <Button className="secondary-btn">
+              <Typography className="text-white">Login</Typography>
+            </Button>
+          </section>
         </div>
       </header>
     </>

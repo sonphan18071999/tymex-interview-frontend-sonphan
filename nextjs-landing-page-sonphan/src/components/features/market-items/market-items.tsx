@@ -4,7 +4,7 @@ import styles from "@/styles/market-items.module.scss";
 import { Spin, Typography } from "antd";
 import { useSearchStore } from "@/hooks/useSearchStore";
 
-const MarketItems: React.FC = () => {
+const MarketItems = () => {
   const { loading, products, increaseLimit, viewMore } = useSearchStore();
 
   return (

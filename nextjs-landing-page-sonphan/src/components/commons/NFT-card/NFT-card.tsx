@@ -5,6 +5,8 @@ import { Button, Image, Tag, Tooltip, Typography } from "antd";
 import { HeartFilled } from "@ant-design/icons";
 import Author from "@/components/commons/author/author";
 import { IProduct } from "@/models/product.model";
+import clsx from "clsx";
+import CardAddToCart from "@/components/commons/card-add-to-cart/card-add-to-cart";
 
 interface NFTCardProps {
   product: IProduct;
@@ -83,7 +85,7 @@ const NFTCard: React.FC<NFTCardProps> = ({ product }) => {
             <HeartFilled />
           </Button>
         </div>
-        <div style={mapBackgroundAvatar()}></div>
+        <div style={mapBackgroundAvatar()} className={styles.character}></div>
       </div>
       <div className={styles.NFT__details}>
         <div className={styles.details__header}>
@@ -93,8 +95,8 @@ const NFTCard: React.FC<NFTCardProps> = ({ product }) => {
           <div className={styles.details__price}>
             <Image
               src={"/assets/images/logos_ethereum.svg"}
-              width={"20"}
-              height={"20"}
+              width="20"
+              height="20"
             />
             <Tooltip title={`${product.price} ETH`} arrow>
               <Typography className="text-white text-[0.8rem] truncate max-w-[100px] overflow-hidden">
@@ -111,6 +113,7 @@ const NFTCard: React.FC<NFTCardProps> = ({ product }) => {
           />
         </div>
       </div>
+      <CardAddToCart id={product.id} className={clsx(styles.add_to_cart)} />
     </div>
   );
 };

@@ -77,6 +77,7 @@ export const useSearchStore = create<SearchStore>((set, get) => ({
         .filter(([, value]) => value !== undefined)
         .map(([key, value]) => {
           if (key === "price") {
+            //Since the price has range filter, so the query is a bit different.
             return `${key}_gte=${encodeURIComponent(value[0])}&${key}_lte=${encodeURIComponent(value[1])}`;
           }
           return `${key}=${encodeURIComponent(value)}`;
