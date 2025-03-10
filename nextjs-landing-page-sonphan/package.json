@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "cp .env.development .env.local && next build",
     "start": "next start",
     "lint": "next lint",
     "style-format": "npx stylelint \"**/*.module.scss\" --fix"
