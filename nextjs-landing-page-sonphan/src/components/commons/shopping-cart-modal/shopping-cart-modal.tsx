@@ -23,8 +23,6 @@ const ShoppingCartModal = () => {
     setIsModalOpen(false);
   };
 
-  const updateQuantity = (id: string, value: number | null) => {};
-
   const removeItem = (id: string) => {
     console.log("id", id);
   };
@@ -75,7 +73,6 @@ const ShoppingCartModal = () => {
                       min={1}
                       max={99}
                       value={+item.quantity}
-                      onChange={(value) => updateQuantity(item.id, value)}
                       className={styles.quantityInput}
                     />
                   </div>

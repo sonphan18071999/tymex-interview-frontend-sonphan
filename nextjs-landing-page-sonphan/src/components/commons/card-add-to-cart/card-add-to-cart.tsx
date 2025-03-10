@@ -1,6 +1,5 @@
 import React from "react";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { notification } from "antd";
 
 interface CardAddToCart {
   className: string;
@@ -15,7 +14,6 @@ const CardAddToCart: React.FC<CardAddToCart> = ({
 }) => {
   const handleAddItemIntoCart = () => {
     onAddItemIntoCart(productId);
-    notification.success;
   };
 
   return (
