@@ -1,7 +1,7 @@
 "use client";
-import { Badge, Button, Typography } from "antd";
+import { Button, Typography } from "antd";
 import React from "react";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import ShoppingCartModal from "@/components/commons/shopping-cart-modal/shopping-cart-modal";
 
 const Header = () => {
   const menuConfigs: MenuConfig[] = [
@@ -31,11 +31,7 @@ const Header = () => {
           </nav>
           <section className="flex flex-row gap-8">
             <div>
-              <Badge count={5} color="black">
-                <Button className="primary-btn text-white">
-                  <ShoppingCartOutlined />
-                </Button>
-              </Badge>
+              <ShoppingCartModal />
             </div>
             <Button className="secondary-btn">
               <Typography className="text-white">Login</Typography>

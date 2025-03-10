@@ -1,20 +1,33 @@
 import React from "react";
-import { Button } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
+import { notification } from "antd";
 
 interface CardAddToCart {
-  id: number;
   className: string;
+  onAddItemIntoCart: (id: string) => void;
+  productId: string;
 }
 
-const CardAddToCart: React.FC<CardAddToCart> = ({ className }) => {
+const CardAddToCart: React.FC<CardAddToCart> = ({
+  className,
+  onAddItemIntoCart,
+  productId,
+}) => {
+  const handleAddItemIntoCart = () => {
+    onAddItemIntoCart(productId);
+    notification.success;
+  };
+
   return (
     <>
       <div className={className}>
-        <Button className="primary-btn text-white">Buy Now</Button>
-        <Button className="secondary-btn text-white">
+        <button className="primary-btn text-white">Buy Now</button>
+        <button
+          className="primary-btn text-white"
+          onClick={handleAddItemIntoCart}
+        >
           <ShoppingCartOutlined />
-        </Button>
+        </button>
       </div>
     </>
   );

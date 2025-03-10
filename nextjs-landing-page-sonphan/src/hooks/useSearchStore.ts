@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { IProduct } from "@/models/product.model";
 import { Category, FilterFormFields, FilterType } from "@/models/filter-form";
+import { CartItem } from "@/models/cart-item.model";
 
 interface SearchStore {
   products: IProduct[];
@@ -18,6 +19,8 @@ interface SearchStore {
   setInputSearch: (text?: string) => void;
   activeTag?: Category;
   setActiveTag: (category?: Category) => void;
+  itemsInCart?: CartItem[];
+  addItemIntoCart: (id: string) => void;
 }
 
 export const useSearchStore = create<SearchStore>((set, get) => ({
@@ -27,6 +30,25 @@ export const useSearchStore = create<SearchStore>((set, get) => ({
   tagSelected: undefined,
   setCurrentFilterActive: undefined,
   multipleFieldsFilter: {} as FilterFormFields,
+  addItemIntoCart: (id: string) => {
+    const { itemsInCart, products } = get();
+    const productFound = products.find((item) => item.id === id);
+
+    if (!productFound) return; // Ensure the product exists
+
+    const updatedItemsInCart: CartItem[] =
+      itemsInCart?.map((item: CartItem) =>
+        item.id === id
+          ? { ...item, quantity: (+item.quantity + 1).toString() }
+          : item,
+      ) || [];
+
+    if (!itemsInCart?.some((item: CartItem) => item.id === id)) {
+      updatedItemsInCart.push({ ...productFound, quantity: "1" });
+    }
+
+    set({ itemsInCart: updatedItemsInCart });
+  },
   setMultipleFieldsFilter: (fields: FilterFormFields) => {
     set({ multipleFieldsFilter: fields });
   },

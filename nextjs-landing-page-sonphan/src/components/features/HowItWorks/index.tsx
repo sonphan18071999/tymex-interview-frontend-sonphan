@@ -5,15 +5,10 @@ const HowItWorks = () => {
   return (
     <section className="flex justify-between flex-wrap max-md:flex-col items-center">
       <div className="md:w-2/5 flex flex-col gap-5 items-start justify-center max-md:text-center max-md:items-center mb-5">
-        <h2 className="text-5xl text-white" data-aos="fade-right" data-aos-once>
+        <h2 className="text-5xl text-white" data-aos="fade-right">
           How it Works
         </h2>
-        <p
-          className="text-white"
-          data-aos="fade-right"
-          data-aos-delay="120"
-          data-aos-once
-        >
+        <p className="text-white" data-aos="fade-right" data-aos-delay="120">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit amet. Lorem
           ipsum dolor sit amet, consecte adipiscing elit ipsum.
         </p>
@@ -21,16 +16,11 @@ const HowItWorks = () => {
           className="px-7 py-2 rounded-sm bg-gradient-to-r from-indigo-500 to-pink-500 hover:opacity-80 text-white"
           data-aos="fade-right"
           data-aos-delay="180"
-          data-aos-once
         >
           Learn More
         </button>
       </div>
-      <div
-        className="md:w-3/5 flex flex-col gap-5"
-        data-aos="fade-left"
-        data-aos-once
-      >
+      <div className="md:w-3/5 flex flex-col gap-5" data-aos="fade-left">
         {[1, 2].map((row) => (
           <div key={row} className="flex gap-5 max-md:flex-col items-center">
             {[1, 2].map((col) => (

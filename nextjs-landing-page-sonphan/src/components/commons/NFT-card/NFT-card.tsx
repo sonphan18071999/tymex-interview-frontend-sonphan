@@ -1,18 +1,22 @@
+"use client";
 import { NFTBackgroundConfig } from "@/models/configs/NFTBackgroundConfig.model";
 import styles from "@/styles/market-place.module.scss";
 import React from "react";
 import { Button, Image, Tag, Tooltip, Typography } from "antd";
-import { HeartFilled } from "@ant-design/icons";
+import { HeartFilled, SmileOutlined } from "@ant-design/icons";
 import Author from "@/components/commons/author/author";
 import { IProduct } from "@/models/product.model";
 import clsx from "clsx";
 import CardAddToCart from "@/components/commons/card-add-to-cart/card-add-to-cart";
+import { useSearchStore } from "@/hooks/useSearchStore";
+import { showNotification } from "@/utils/notificationService";
 
 interface NFTCardProps {
   product: IProduct;
 }
 
 const NFTCard: React.FC<NFTCardProps> = ({ product }) => {
+  const { addItemIntoCart } = useSearchStore();
   const NFTcards: NFTBackgroundConfig[] = [
     { type: "Epic", src: "/assets/images/epic-card-bg.svg" },
     { type: "Mythic", src: "/assets/images/mythic-card-bg.svg" },
@@ -71,6 +75,15 @@ const NFTCard: React.FC<NFTCardProps> = ({ product }) => {
       backgroundRepeat: "no-repeat",
     };
   };
+  const handleAddItemIntoCart = (id: string) => {
+    addItemIntoCart(id);
+    showNotification({
+      type: "success",
+      message: "Success!",
+      description: "Your action was successful!",
+      icon: <SmileOutlined style={{ color: "#108ee9" }} />,
+    });
+  };
 
   return (
     <div className={`nft-card w-2 h-2 ${styles.NFT__card}`}>
@@ -113,7 +126,11 @@ const NFTCard: React.FC<NFTCardProps> = ({ product }) => {
           />
         </div>
       </div>
-      <CardAddToCart id={product.id} className={clsx(styles.add_to_cart)} />
+      <CardAddToCart
+        productId={product.id}
+        className={clsx(styles.add_to_cart)}
+        onAddItemIntoCart={handleAddItemIntoCart}
+      />
     </div>
   );
 };
